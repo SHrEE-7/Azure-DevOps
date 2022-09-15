@@ -12,7 +12,7 @@ pool:
 jobs:
 - job: First_job
   steps:
-  - script: echo Hey, how are you?
+  - script: echo This is First job
     displayName: 'Run a one-line script'
 
   - script: |
@@ -21,5 +21,10 @@ jobs:
     displayName: 'Run a multi-line script'
 - job: Second_job
   steps:
-  - script: echo Hey, how are you?
+  - script: echo This is Second job..!!
+    displayName: 'Run a one-line script'
+
+- job: Third_job
+  steps:
+  - script: echo This is Third job..!!
     displayName: 'Run a one-line script'
