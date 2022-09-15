@@ -15,21 +15,31 @@ stages:
       - job: FirstJob
         steps:
         - bash: echo Build First Job..!!
-      - job: SecondJob
-        steps:
-        - bash: echo Build Second Job..!!
-  - stage: DevDevploy
-    jobs:
-      - job: DevDeployJob
-        steps:
-          - bash: echo DevDeploy Job
-  - stage: QADevploy
-    jobs:
-      - job: QADeployJob
-        steps:
-          - bash: echo QADeploy Job
-  - stage: ProdDevploy
-    jobs:
-      - job: ProdDeployJob
-        steps:
-          - bash: echo ProdDeploy Job
+        - bash: echo Build $(Build.BuildNumber)
+        - bash: echo Build $(Build.BuildId) 
+        - bash: echo Build $(Build.SourceBranchName) 
+        - bash: echo Build $(Build.SourcesDirectory) 
+        - bash: echo Build $(System.DefaultWorkingDirectory) 
+        - bash: echo Build $(Build.ArtifactStagingDirectory) 
+
+
+
+
+  #     - job: SecondJob
+  #       steps:
+  #       - bash: echo Build Second Job..!!
+  # - stage: DevDevploy
+  #   jobs:
+  #     - job: DevDeployJob
+  #       steps:
+  #         - bash: echo DevDeploy Job
+  # - stage: QADevploy
+  #   jobs:
+  #     - job: QADeployJob
+  #       steps:
+  #         - bash: echo QADeploy Job
+  # - stage: ProdDevploy
+  #   jobs:
+  #     - job: ProdDeployJob
+  #       steps:
+  #         - bash: echo ProdDeploy Job
