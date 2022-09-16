@@ -6,16 +6,38 @@
 trigger:
 - main
 
-strategy:
-  matrix:
-    linux:
-      operatingSystem: 'ubuntu-latest'
-    mac:
-      operatingSystem: 'macos-latest'
+# strategy:
+#   matrix:
+#     linux:
+#       operatingSystem: 'ubuntu-latest'
+#     mac:
+#       operatingSystem: 'macos-latest'
 
 
 pool:
-  vmImage: $(operatingSystem)
-steps:
-- script: echo $(operatingSystem)
-  displayName: 'Run a one-line script'
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+        - bash: echo "Start the build..!"
+  - stage: DevDeploy
+    jobs:
+      - deployment: DevDeployJob
+        environment: Dev
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: echo Deploy to dev,,!!
+  - stage: QADeploy
+    jobs:
+      - deployment: DevDeployJob
+        environment: QA
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: echo Deploy to dev,,!!  
