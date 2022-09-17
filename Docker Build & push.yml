@@ -21,7 +21,7 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build an image & push on Registry
       inputs:
         containerRegistry: 'Docker-Hub'
         repository: '07shree/currancy-exchange-devops'
